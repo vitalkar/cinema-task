@@ -1,0 +1,39 @@
+<div id="add_bar" class="movie_add_container container">
+  <form id="search_form" autocomplete="off" novalidate>
+    <input name="search" class="form-control" type="search" placeholder=" &#xf002;"
+    (keyup)="getMovies(searchQuery)" [(ngModel)]="searchQuery" autofocus="autofocus">
+  </form>
+  <ng-template [ngIf]="showSearchResults">
+    <div id="movies_dropdown">
+      <hr class="hr_dropdown">
+      <ul id="movies_list" class="list-group">
+        <li id="search_item_header">
+          <div class="header_field">
+            Name
+          </div>
+          <div class="header_field">
+            Year
+          </div>
+          <div class="header_field">
+            IMDB id
+          </div>
+        </li>
+        <li class="search_item list-group-item" *ngFor="let movie of movieSearchList">
+          <div id="movie_title" class="movie_field">
+            {{movie.Title}}
+          </div>
+          <div id="movie_year" class="movie_field">
+            {{movie.Year}}
+          </div>
+          <div id="movie_id" class="movie_field">
+            {{movie.imdbID}}
+          </div>
+          <button class="btn_add" (click)="addMovie(movie)">
+            <i class="fa fa-plus"></i>
+          </button>
+        </li>
+      </ul>
+      <hr class="hr_dropdown">
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,24 @@
+<div class="movie_item">
+  <div class="movie_title">
+    <h4 class="">
+      {{movie.title | titlecase}}
+    </h4>
+    <small class="">
+      Year: {{movie.year}}
+    </small>
+  </div>
+  <div class="movie_details">
+    <small>
+      Runtime: {{movie.runtime}}
+    </small>
+    <small>
+      Genre: {{movie.genre | titlecase}}
+    </small>
+    <small >
+      Director: {{movie.director | titlecase}}
+    </small>
+    <small>
+      IMDB id: {{movie.id | titlecase}}
+    </small>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.modal-content{
+    border-radius: 25px;
+    border: 2px solid #6a1399;
+
+}
+
+.modal-header{
+    /* background-color: whitesmoke; */
+}
+
+.modal-body{
+    /* position: relative; */
+    background-image: linear-gradient(to right,#9568ad,#6a1399,#9568ad);
+    border: 7px solid whitesmoke;
+}
+
+.modal-title{
+    margin: auto;
+    color: #6a1399;
+
+    letter-spacing: 2px;
+    font-weight: 700;
+
+}
+.modal-footer{
+    /* background-color: whitesmoke; */
+    display: flex;
+    justify-content: space-between;
+}

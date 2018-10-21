@@ -1,0 +1,80 @@
+<div class="movie_list_container container">
+  <ul class="list-group">
+    <li class="movie_list_item list-group-item" *ngFor="let movie of moviesList">
+      
+      <div class="movie_item">
+        <app-movie-item [movie]="movie"></app-movie-item>
+      </div>
+          <button type="button" class="btn_edit" data-toggle="modal" data-target="#editModal" (click)="editMovieDetails(movie)">
+            <i class="fa fa-edit"></i></button>
+    </li>
+  </ul>
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">
+          <span id="st_out">
+            <span id="st_in">Movie Details</span>
+          </span>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm" class="container">
+          <div class="form-group">
+            <input name="id" id="id" type="hidden" [(ngModel)]="editMovie.id">
+          </div>
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input #title="ngModel" name="title" id="title" type="text" [value]="editMovie.title" 
+            [(ngModel)]="editMovie.title" required>
+          </div>
+          <div class="form-group">
+            <label for="year">Year</label>
+            <input #year="ngModel" ngModel name="year" id="year" type="text" [value]="editMovie.year" required
+             [(ngModel)]="editMovie.year" numberValidator>
+          </div>
+          <div class="error_number" *ngIf="year.errors?.numberValidator">
+            {{numberErrorMsg | titlecase}}
+          </div>           
+          <div class="form-group">
+            <label for="director">Director</label>
+            <input #director name="director" id="director" type="text" [value]="editMovie.director" required [(ngModel)]="editMovie.director">
+          </div>
+          <div class="form-group">
+            <label for="runtime">Runtime</label>
+            <input #runtime name="runtime" id="runtime" type="text" [value]="editMovie.runtime" required [(ngModel)]="editMovie.runtime">
+          </div>
+          <div class="form-group">
+            <label for="genre">Genre</label>
+            <input #genre name="genre" id="genre" type="text" [value]="editMovie.genre" required [(ngModel)]="editMovie.genre">
+          </div>
+          <div id="alert" *ngIf="year.errors?.required || title.errors?.required 
+                                || director.errors?.required || runtime.errors?.required || genre.errors?.required">
+            {{editWarningMsg | titlecase}}<span class="highlight">!</span>
+          </div>
+        </form>
+          <!-- delete template -->
+          <div id="delete_window" class="d-flex flex-column" *ngIf="showDeleteWindow">
+            <p class="" id="delete_text">Are you sure you want to delete <span class="highlight">"</span>{{ editMovie.title | titlecase }}<span class="highlight">"?</span></p>
+            <div class="d-flex justify-content-around mt-auto">
+              <button type="button" class="btn_cancel" (click)="toggleDeleteWindow()">Cancel</button>
+              <button type="button" id="btn_ok" data-toggle="modal" data-target="#editModal" 
+              (click)="deleteMovie(editMovie.id);toggleDeleteWindow()">OK</button>
+            </div>
+          </div>
+          <!-- end of delete template -->
+      </div>
+      <div class="modal-footer" [ngClass]="{'btns_edit_disabled': showDeleteWindow}">
+          <button type="button" id="btn_save" class="" data-dismiss="modal"
+          [disabled]="!editForm.form.valid || showDeleteWindow" (click)="save(editMovie.id)">Save</button>
+          <button type="button" class="btn_cancel" data-dismiss="modal" data-target="#editModal" 
+          [disabled]="showDeleteWindow">Cancel</button>
+          <button type="button" id="btn_delete" [disabled]="showDeleteWindow" (click)="toggleDeleteWindow()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+

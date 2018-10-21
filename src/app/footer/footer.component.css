@@ -1,0 +1,16 @@
+footer{
+    background-image: linear-gradient(to right,#9568ad,#6a1399,#9568ad);
+    border: 1px solid whitesmoke;
+    height: 10%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+h3{
+    color: whitesmoke;
+    letter-spacing: 2px;
+}
+
+h3::first-letter{
+    color: #cf9800;
+}

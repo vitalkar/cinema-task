@@ -1,0 +1,30 @@
+.movie_item{
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    background-color: whitesmoke;
+    border-radius: 5px;
+}
+
+.movie_title{
+    flex-basis: 45%;
+    align-self: center;
+}
+
+.movie_title::first-letter{
+    color: #6a1399;
+}
+
+.movie_details{
+    border-left: 3px solid #6a1399;
+    padding-left: 5px;
+    flex-basis: 50%;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+
+h4{
+    overflow: hidden;
+    /* text-overflow: ellipsis; */
+}
